@@ -4,7 +4,7 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    static void main() {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
 
@@ -26,7 +26,7 @@ public class Main {
         double mortgage = principal * (dividend / divisor);
         double roundedMortgage = (double) Math.round(mortgage * 100) / 100;
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(roundedMortgage);
-        
+
         System.out.println("Mortgage: " + formattedMortgage);
     }
 }
