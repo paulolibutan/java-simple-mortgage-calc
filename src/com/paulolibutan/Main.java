@@ -21,12 +21,13 @@ public class Main {
         byte numberOfPaymentsInYears = scanner.nextByte();
         int numberOfPaymentsInMonths = numberOfPaymentsInYears * MONTHS_IN_YEAR;
 
-        double dividend = annualInterestRate * Math.pow((1 + monthlyInterestRate), numberOfPaymentsInMonths);
+        double dividend = monthlyInterestRate * Math.pow((1 + monthlyInterestRate), numberOfPaymentsInMonths);
         double divisor = Math.pow((1 + monthlyInterestRate), numberOfPaymentsInMonths) - 1;
         double mortgage = principal * (dividend / divisor);
         double roundedMortgage = (double) Math.round(mortgage * 100) / 100;
         String formattedMortgage = NumberFormat.getCurrencyInstance().format(roundedMortgage);
 
         System.out.println("Mortgage: " + formattedMortgage);
+        System.out.println(numberOfPaymentsInMonths);
     }
 }
