@@ -8,18 +8,39 @@ public class Main {
         final byte MONTHS_IN_YEAR = 12;
         final byte PERCENT = 100;
 
+        double principal;
+        float monthlyInterestRate;
+        int numberOfPaymentsInMonths;
+
         Scanner scanner = new Scanner(System.in);
 
-        System.out.print("Principal: ");
-        double principal = scanner.nextDouble();
+        while (true) {
+            System.out.print("Principal: ");
+            principal = scanner.nextDouble();
+            if (principal >= 1_000 && principal <= 1_000_000)
+                break;
+            System.out.println("Enter a value between 1000 and 1000000");
+        }
 
-        System.out.print("Annual Interest Rate: ");
-        float annualInterestRate = scanner.nextFloat();
-        float monthlyInterestRate = annualInterestRate / MONTHS_IN_YEAR / PERCENT;
+        while (true) {
+            System.out.print("Annual Interest Rate: ");
+            float annualInterestRate = scanner.nextFloat();
+            if (annualInterestRate >= 1 && annualInterestRate <= 10) {
+                monthlyInterestRate = annualInterestRate / MONTHS_IN_YEAR / PERCENT;
+                break;
+            }
+            System.out.println("Enter a value between 1 and 10");
+        }
 
-        System.out.print("Period (Years): ");
-        byte numberOfPaymentsInYears = scanner.nextByte();
-        int numberOfPaymentsInMonths = numberOfPaymentsInYears * MONTHS_IN_YEAR;
+        while (true) {
+            System.out.print("Period (Years): ");
+            int numberOfPaymentsInYears = scanner.nextByte();
+            if (numberOfPaymentsInYears >= 1 && numberOfPaymentsInYears <= 30) {
+                numberOfPaymentsInMonths = numberOfPaymentsInYears * MONTHS_IN_YEAR;
+                break;
+            }
+            System.out.println("Enter a value between 1 and 30");
+        }
 
         double dividend = monthlyInterestRate * Math.pow((1 + monthlyInterestRate), numberOfPaymentsInMonths);
         double divisor = Math.pow((1 + monthlyInterestRate), numberOfPaymentsInMonths) - 1;
